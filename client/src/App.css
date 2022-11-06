@@ -29,7 +29,7 @@ body {
   height: 90%;
   top: 5%;
 }
-
+ /* 
 #app-root {
   position: absolute;
   width: 100%;
@@ -37,7 +37,7 @@ body {
   top: 0%;
   left: 0%;
 }
-
+*/
 #top5-banner {
   position: absolute;
   left: 0%;
@@ -166,7 +166,7 @@ body {
 .list-card:aria-disabled,
 .list-card[aria-disabled] {
   border: 1px solid #999999;
-  background-color: #cccccc;
+  background-color: #f1bbbb;
   color: #666666;
   pointer-events: none;
 }
@@ -290,13 +290,47 @@ input {
 .modal-dialog {
   position: relative;
   max-width: 800px;
-  max-height: 80vh;
+  max-height: 100vh;
+  height: 200px;
   background: var(--swatch-complement);
-  overflow: auto;
   cursor: default;
   border-width: 5px;
   border-radius: 10px;
   border-style: groove;
+}
+
+.modal-button { 
+  width: 20vh;
+  height: 5vh;
+
+}
+
+.modal-north {
+  font-size:28pt;
+  font-weight: bold;
+  background-color: #669966;
+  color:white;
+}
+
+.modal-center {
+  width: 400px;
+  display: grid;
+  grid-template-rows: 33% 33% 33%;
+  gap: 10px 20px;
+  font-size: 20pt;
+}
+
+span {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.modal-south {
+  display:flex;
+  flex-direction: row;
+  background-color: lightgray;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal-dialog > * {

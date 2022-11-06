@@ -10,10 +10,11 @@ const style = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 400,
+    height: 200,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
-    p: 4,
+
 };
 
 export default function MUIRemoveSongModal() {
@@ -38,7 +39,7 @@ export default function MUIRemoveSongModal() {
 
     return (
         <Modal
-            open={store.listMarkedForDeletion !== null}
+            open={store.songMarkedForDeletion !== null}
         >
             <Box sx={style}>
             <div

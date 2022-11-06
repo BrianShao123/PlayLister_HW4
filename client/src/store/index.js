@@ -193,7 +193,8 @@ function GlobalStoreContextProvider(props) {
                     newListCounter: store.newListCounter,
                     listNameActive: false,
                     listIdMarkedForDeletion: null,
-                    listMarkedForDeletion: null
+                    listMarkedForDeletion: null,
+                    songMarkedForDeletion:payload.currentSong
                 });
             }
             case GlobalStoreActionType.HIDE_MODALS: {
