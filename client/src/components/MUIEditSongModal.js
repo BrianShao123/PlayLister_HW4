@@ -9,7 +9,8 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: 335,
+    height: 270,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -47,14 +48,19 @@ export default function MUIEditSongModal() {
         setYouTubeId(event.target.value);
     }
 
+    let modalClass = "modal";
+    if (store.isEditSongModalOpen()) {
+        modalClass += " is-visible";
+    }
+
     return (
         <Modal
-            open={store.listMarkedForDeletion !== null}
+            open={store.currentSong !== null}
         >
             <Box sx={style}>
             <div
             id="edit-song-modal"
-            className="modal is-visible"
+            className={modalClass}
             data-animation="slideInOutLeft">
             <div
                 id='edit-song-root'
