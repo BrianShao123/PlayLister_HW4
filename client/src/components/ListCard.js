@@ -55,13 +55,18 @@ function ListCard(props) {
     }
 
     function handleKeyPress(event) {
-        if (event.code === "Enter") {
+        if (event.code === "Enter" && text) {
             let id = event.target.id.substring("list-".length);
             store.changeListName(id, text);
             toggleEdit();
         }
+        else if(event.code == 'Enter' && !text)
+        {
+            toggleEdit();
+        }
     }
     function handleUpdateText(event) {
+        console.log("event setText is " + event.target.value);
         setText(event.target.value);
     }
 
