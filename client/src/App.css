@@ -302,7 +302,7 @@ input {
   max-width: 800px;
   width: 410px;
   max-height: 80vh;
-  background: var(--swatch-complement);
+  background: var(--swatch-primary);
   cursor: default;
   border-width: 5px;
   border-radius: 10px;
@@ -349,7 +349,7 @@ input {
 .modal-north {
   font-size:28pt;
   font-weight: bold;
-  background-color: #669966;
+  background-color: #1976d2;
   color:white;
 }
 

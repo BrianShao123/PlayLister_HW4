@@ -98,6 +98,7 @@ function AuthContextProvider(props) {
     }
 
     auth.registerUser = async function(firstName, lastName, email, password, passwordVerify) {
+        try {
         const response = await api.registerUser(firstName, lastName, email, password, passwordVerify);      
         if (response.status === 200) {
             authReducer({
@@ -108,6 +109,37 @@ function AuthContextProvider(props) {
             })
             history.push("/login");
         }
+    }
+    catch(err) {
+        console.log("error is " + err);
+        let errorCode = err.toString().replace(/\D/g,'');
+        console.log("error code is " + errorCode); 
+        let errorMessage = "";
+        if(errorCode == 400)
+        {
+            errorMessage = "Please enter all required fields.";
+        }
+        else if(errorCode == 401) 
+        {
+            errorMessage = "Please enter a password of at least 8 characters.";
+        }
+        else if(errorCode == 402) 
+        {
+            errorMessage = "Please enter the same password twice.";
+        }
+        else if(errorCode == 403) 
+        {
+            errorMessage = "An account with this email address already exists.";
+        }
+        authReducer({
+            type: AuthActionType.ACCOUNT_ERROR,
+            payload: {
+                errs: true,
+                msg: errorMessage
+            }
+        })
+        
+    }
     }
 
     auth.loginUser = async function(email, password) {
@@ -126,7 +158,6 @@ function AuthContextProvider(props) {
     catch(err) {
         console.log("error is " + err);
         let errorCode = err.toString().replace(/\D/g,'');
-        //errorCode = errorCode.join("");
         console.log("error code is " + errorCode); 
         let errorMessage = "";
         if(errorCode == 400)
