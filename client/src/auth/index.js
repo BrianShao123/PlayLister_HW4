@@ -10,13 +10,17 @@ export const AuthActionType = {
     GET_LOGGED_IN: "GET_LOGGED_IN",
     LOGIN_USER: "LOGIN_USER",
     LOGOUT_USER: "LOGOUT_USER",
-    REGISTER_USER: "REGISTER_USER"
+    REGISTER_USER: "REGISTER_USER",
+    ACCOUNT_ERROR: "ACCOUNT_ERROR",
+    OK_RESPONSE: "OK_RESPONSE"
 }
 
 function AuthContextProvider(props) {
     const [auth, setAuth] = useState({
         user: null,
-        loggedIn: false
+        loggedIn: false,
+        error: false,
+        errMessage: null
     });
     const history = useHistory();
 
@@ -30,25 +34,49 @@ function AuthContextProvider(props) {
             case AuthActionType.GET_LOGGED_IN: {
                 return setAuth({
                     user: payload.user,
-                    loggedIn: payload.loggedIn
+                    loggedIn: payload.loggedIn,
+                    error: false,
+                    errMessage: null
                 });
             }
             case AuthActionType.LOGIN_USER: {
                 return setAuth({
                     user: payload.user,
-                    loggedIn: true
+                    loggedIn: true,
+                    error: false,
+                    errMessage: null
                 })
             }
             case AuthActionType.LOGOUT_USER: {
                 return setAuth({
                     user: null,
-                    loggedIn: false
+                    loggedIn: false,
+                    error: false,
+                    errMessage: null
                 })
             }
             case AuthActionType.REGISTER_USER: {
                 return setAuth({
                     user: payload.user,
-                    loggedIn: true
+                    loggedIn: true,
+                    error: false,
+                    errMessage: null
+                })
+            }
+            case AuthActionType.ACCOUNT_ERROR: {
+                return setAuth({
+                    user: null,
+                    loggedIn: false,
+                    error: payload.errs,
+                    errMessage: payload.msg
+                })
+            }
+            case AuthActionType.OK_RESPONSE: {
+                return setAuth({
+                    user: null,
+                    loggedIn: false,
+                    error: false,
+                    errMessage: null
                 })
             }
             default:
@@ -83,6 +111,7 @@ function AuthContextProvider(props) {
     }
 
     auth.loginUser = async function(email, password) {
+        try {
         const response = await api.loginUser(email, password);
         if (response.status === 200) {
             authReducer({
@@ -93,6 +122,39 @@ function AuthContextProvider(props) {
             })
             history.push("/");
         }
+    }
+    catch(err) {
+        console.log("error is " + err);
+        let errorCode = err.toString().replace(/\D/g,'');
+        //errorCode = errorCode.join("");
+        console.log("error code is " + errorCode); 
+        let errorMessage = "";
+        if(errorCode == 400)
+        {
+            errorMessage = "Please enter all required fields."
+        }
+        else if(errorCode == 401) 
+        {
+            errorMessage = "Wrong email or password provided.";
+        }
+        authReducer({
+            type: AuthActionType.ACCOUNT_ERROR,
+            payload: {
+                errs: true,
+                msg: errorMessage
+            }
+        })
+        
+    }
+    }
+
+    auth.closeModal = async function() {
+        authReducer({
+            type: AuthActionType.OK_RESPONSE,
+            payload: {
+                error: false
+            }
+        })
     }
 
     auth.logoutUser = async function() {

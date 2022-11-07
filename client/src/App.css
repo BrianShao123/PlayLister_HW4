@@ -297,6 +297,18 @@ input {
   font-family: var(--font-primary);
 }
 
+.modal-root {
+  position: absolute;
+  max-width: 800px;
+  width: 410px;
+  max-height: 80vh;
+  background: var(--swatch-complement);
+  cursor: default;
+  border-width: 5px;
+  border-radius: 10px;
+  border-style: groove;
+}
+
 .modal.is-visible {
   visibility: visible;
   opacity: 1;
@@ -304,8 +316,7 @@ input {
 
 .modal-dialog {
   position: absolute;
-  top: 17.5em;
-  left: 35em;
+  top: 2.6em;
   right: 0;
   bottom: 0;
   max-width: 800px;
