@@ -6,6 +6,9 @@ import MUIRemoveSongModal from './MUIRemoveSongModal'
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import { GlobalStoreContext } from '../store/index.js'
+import AuthContext from '../auth'
+import { Typography } from '@mui/material'
+
 /*
     This React component lets us edit a loaded list, which only
     happens when we are on the proper route.
@@ -14,6 +17,7 @@ import { GlobalStoreContext } from '../store/index.js'
 */
 function WorkspaceScreen() {
     const { store } = useContext(GlobalStoreContext);
+    const { auth } = useContext(AuthContext);
     store.history = useHistory();
     
     let modalJSX = "";
@@ -23,6 +27,12 @@ function WorkspaceScreen() {
     else if (store.isRemoveSongModalOpen()) {
         modalJSX = <MUIRemoveSongModal />;
     }
+
+    let text ="";
+    if (store.currentList && auth.loggedIn)
+        text = store.currentList.name;
+
+
     return (
         <Box>
         <List 
@@ -39,7 +49,10 @@ function WorkspaceScreen() {
                     />
                 ))  
             }
-         </List>            
+         </List>  
+         <div id="playlister-statusbar">
+            <Typography variant="h4">{text}</Typography>
+        </div>          
          { modalJSX }
          </Box>
     )
