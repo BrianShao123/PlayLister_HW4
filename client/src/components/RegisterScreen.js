@@ -33,6 +33,7 @@ export default function RegisterScreen() {
                 <CssBaseline />
                 <Box
                     sx={{
+                    
                         marginTop: 8,
                         display: 'flex',
                         flexDirection: 'column',
