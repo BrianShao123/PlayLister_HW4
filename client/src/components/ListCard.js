@@ -87,7 +87,7 @@ function ListCard(props) {
               backgroundColor: '#eeeedd',
               opacity: [0.9, 0.8, 0.7],  } }}
             style={{ width: '100%',
-                    fontSize: '48pt',
+                    fontSize: '30pt',
                     borderRadius: 50,
                     }}
             button

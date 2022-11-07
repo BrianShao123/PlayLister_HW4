@@ -73,7 +73,7 @@ function SongCard(props) {
                 type="button"
                 id={"remove-song-" + index}
                 className="list-card-button"
-                value={"\u2715"}
+                value={"🗑"}
                 onClick={handleRemoveSong}
             />
         </div>
