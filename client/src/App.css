@@ -11,7 +11,7 @@
   --swatch-complement: #e1e4cb;
   --swatch-contrast: #111111;
   --swatch-accent: #669966;
-  --swatch-status: #123456;
+  --swatch-status: #123354;
   --my-font-family: "Robaaaoto";
   --bounceEasing: cubic-bezier(0.51, 0.92, 0.24, 1.15);
 }
@@ -127,9 +127,9 @@ body {
 
 #list-selector-heading {
   position: absolute;
-  left: 0%;
+  left: 5.5em;
   top: 0%;
-  width: 100%;
+  width: 50%;
   height: 10%;
   text-align: center;
   font-size: 24pt;
@@ -138,6 +138,7 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 
 #add-list-button {
   float: left;
