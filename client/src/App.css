@@ -127,7 +127,7 @@ body {
 
 #list-selector-heading {
   position: absolute;
-  left: 5.5em;
+  left: 9em;
   top: 0%;
   width: 50%;
   height: 10%;
@@ -138,6 +138,7 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 
 
 #add-list-button {
@@ -289,21 +290,36 @@ input {
 }
 
 .modal-dialog {
-  position: relative;
+  position: absolute;
+  top: 17.5em;
+  left: 35em;
+  right: 0;
+  bottom: 0;
   max-width: 800px;
   max-height: 100vh;
   height: 200px;
+  width: 400px;
   background: var(--swatch-complement);
   cursor: default;
   border-width: 5px;
   border-radius: 10px;
   border-style: groove;
+  transition: all 0.35s ease-in;
 }
 
 .modal-button { 
   width: 20vh;
   height: 5vh;
+  
+}
 
+.delete-list-button { 
+  position:relative;
+  left: 6em;
+  top: 2em;
+  width: 20vh;
+  height: 5vh;
+  
 }
 
 .modal-north {

@@ -34,20 +34,20 @@ export default function MUIDeleteModal() {
         <Modal
             open={store.listMarkedForDeletion !== null}
         >
-            <Box sx={style}>
+            <Box>
                 <div className="modal-dialog">
                 <header className="dialog-header">
-                    Delete the {name} Top 5 List?
+                    Delete the {name} Playlist?
                 </header>
-                <div id="confirm-cancel-container">
+                <div id="modal-button">
                     <button
                         id="dialog-yes-button"
-                        className="modal-button"
+                        className="delete-list-button"
                         onClick={handleDeleteList}
                     >Confirm</button>
                     <button
-                        id="dialog-no-button"
-                        className="modal-button"
+                        id="modal-button"
+                        className="delete-list-button"
                         onClick={handleCloseModal}
                     >Cancel</button>
                 </div>
